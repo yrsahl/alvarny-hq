@@ -2,7 +2,7 @@ import { createCookieSessionStorage, redirect } from "react-router"
 
 const sessionStorage = createCookieSessionStorage({
   cookie: {
-    name: "orbit_session",
+    name: "hq_session",
     httpOnly: true,
     path: "/",
     sameSite: "lax",

@@ -12,9 +12,10 @@ export async function action({ request }: Route.ActionArgs) {
   const form = await request.formData()
   const password = form.get("password") as string
 
-  const expected = process.env.ORBIT_PASSWORD
-  if (expected && password !== expected) return { error: "Wrong passphrase." }
-  if (!expected && !password?.trim()) return { error: "Enter a passphrase." }
+  const expected = process.env.HQ_PASSWORD ?? process.env.ORBIT_PASSWORD
+  const isDev = process.env.NODE_ENV !== "production"
+  if (!isDev && expected && password !== expected) return { error: "Wrong passphrase." }
+  if (!isDev && !expected && !password?.trim()) return { error: "Enter a passphrase." }
 
   return createUserSession("/")
 }
@@ -29,8 +30,8 @@ export default function Login() {
       <div className="login-card">
         <div className="planet planet-lg" />
         <div>
-          <h1 className="login-h1">Orbit<em>.</em></h1>
-          <p className="login-tag">Clear skies. Full visibility.</p>
+          <h1 className="login-h1">Alvarny HQ<em>.</em></h1>
+          <p className="login-tag">A calm vantage point above everything you ship.</p>
         </div>
         <Form method="post" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div className="login-field">
@@ -39,7 +40,7 @@ export default function Login() {
           </div>
           {data?.error && <p className="login-error">{data.error}</p>}
           <button className="login-btn" type="submit" disabled={pending}>
-            {pending ? "Entering…" : "Enter Orbit ✦"}
+            {pending ? "Entering…" : "Enter Alvarny HQ ✦"}
           </button>
         </Form>
         <div className="login-footer">

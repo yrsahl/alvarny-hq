@@ -63,7 +63,7 @@ export default function Tickets({ loaderData }: Route.ComponentProps) {
       <div className="card tickets-panel" style={{ marginBottom: 24 }}>
         <div className="compose">
           <textarea
-            placeholder="An idea, a bug, a half-formed thought… Orbit translates it into a Claude Code prompt."
+            placeholder="An idea, a bug, a half-formed thought… Alvarny HQ translates it into a Claude Code prompt."
             value={draft}
             onChange={e => setDraft(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) submitDraft() }}

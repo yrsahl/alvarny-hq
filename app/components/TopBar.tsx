@@ -13,7 +13,7 @@ export default function TopBar({ onCmdOpen }: { onCmdOpen: () => void }) {
     <header className="topbar">
       <div className="topbar-brand">
         <div className="planet" />
-        <span className="brand-name">Orbit<em>.</em></span>
+        <span className="brand-name">Alvarny HQ<em>.</em></span>
       </div>
 
       <nav className="topbar-nav">
