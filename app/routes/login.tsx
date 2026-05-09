@@ -30,22 +30,26 @@ export default function Login() {
       <div className="login-card">
         <div className="planet planet-lg" />
         <div>
-          <h1 className="login-h1">Alvarny HQ<em>.</em></h1>
+          <h1 className="login-h1">Cockpit<em>.</em></h1>
           <p className="login-tag">A calm vantage point above everything you ship.</p>
         </div>
         <Form method="post" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          <div className="login-field">
+            <label className="login-label">Email</label>
+            <input className="login-input" type="email" defaultValue="alvar@alvarny.com" />
+          </div>
           <div className="login-field">
             <label className="login-label">Passphrase</label>
             <input className="login-input" name="password" type="password" autoFocus placeholder="••••••••••" />
           </div>
           {data?.error && <p className="login-error">{data.error}</p>}
           <button className="login-btn" type="submit" disabled={pending}>
-            {pending ? "Entering…" : "Enter Alvarny HQ ✦"}
+            {pending ? "Entering…" : "Enter Cockpit ✦"}
           </button>
         </Form>
         <div className="login-footer">
           <span>Private · single operator</span>
-          <span>v0.1.0</span>
+          <span>v0.4.2</span>
         </div>
       </div>
     </div>

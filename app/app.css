@@ -59,11 +59,12 @@ body {
 .brand-name em { font-style: italic; color: var(--accent); }
 .topbar-nav { background: var(--card); border-radius: 999px; padding: 4px; display: flex; gap: 4px; box-shadow: var(--shadow-sm); margin: 0 12px; }
 .topbar-nav a { padding: 7px 14px; border-radius: 999px; font-size: 13px; font-weight: 500; transition: background 0.15s, color 0.15s; color: var(--ink-2); white-space: nowrap; }
+.topbar-nav a:hover { color: var(--ink); }
 .topbar-nav a.active { background: var(--ink); color: var(--bg); }
 .topbar-right { display: flex; align-items: center; gap: 10px; margin-left: auto; flex-shrink: 0; }
-.pill { display: flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; background: var(--card); font-size: 11.5px; color: var(--ink-2); box-shadow: var(--shadow-sm); border: none; cursor: pointer; font-family: inherit; }
-.avatar { width: 32px; height: 32px; border-radius: 999px; background: linear-gradient(135deg, var(--accent), var(--accent-deep)); color: #fff; font-size: 13px; font-weight: 600; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.pulse-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--good); animation: pulse 2.4s ease-in-out infinite; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: var(--card); font-size: 12px; color: var(--ink-2); box-shadow: var(--shadow-sm); border: none; cursor: pointer; font-family: inherit; }
+.avatar { width: 32px; height: 32px; border-radius: 999px; background: linear-gradient(135deg, var(--accent), var(--accent-deep)); color: #fff; font-size: 13px; font-weight: 600; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+.pulse-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--good); animation: pulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
 /* ── Page ────────────────────────────────────── */
@@ -122,9 +123,9 @@ body {
 .mission-stat .v small.down { color: var(--accent); }
 .mission-stat .l { font-size: 11px; color: var(--mute); }
 .mission-meta { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { padding: 3px 8px; border-radius: 6px; background: var(--bg-2); font-size: 11px; color: var(--ink-2); }
-.chip.good { background: #e8f3ec; color: var(--good); }
-.chip.warn { background: #fdf0dc; color: var(--warn); }
+.chip { padding: 3px 8px; border-radius: 6px; background: var(--bg-2); font-size: 10.5px; color: var(--ink-2); font-family: var(--font-mono), 'Geist Mono', monospace; }
+.chip.good { background: color-mix(in oklab, var(--good) 14%, transparent); color: var(--good); }
+.chip.warn { background: color-mix(in oklab, var(--warn) 16%, transparent); color: var(--warn); }
 
 /* ── Bottom grid ─────────────────────────────── */
 .grid-2 { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--gap); margin-bottom: 22px; }
@@ -165,13 +166,13 @@ body {
 
 /* ── Ticket rows ─────────────────────────────── */
 .ticket-list { display: flex; flex-direction: column; }
-.ticket-row { display: flex; align-items: center; gap: 14px; padding: 11px 0; border-top: 1px solid var(--line); cursor: pointer; transition: padding-left 0.15s; }
+.ticket-row { display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); cursor: pointer; transition: padding-left 0.15s; }
 .ticket-row:hover { padding-left: 6px; }
-.ticket-id { font-family: var(--font-mono), 'Geist Mono', monospace; font-size: 11px; color: var(--mute); flex: 0 0 52px; }
+.ticket-id { font-family: var(--font-mono), 'Geist Mono', monospace; font-size: 11px; color: var(--mute); }
 .ticket-text { flex: 1; }
 .ticket-text strong { font-size: 13.5px; font-weight: 500; display: block; }
 .ticket-text small { font-size: 11.5px; color: var(--mute); }
-.ticket-right { display: flex; gap: 6px; flex-shrink: 0; }
+.ticket-right { display: flex; gap: 6px; flex-shrink: 0; align-items: center; }
 
 /* ── Pills ───────────────────────────────────── */
 .site-pill { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 999px; font-family: var(--font-mono), 'Geist Mono', monospace; font-size: 10.5px; font-weight: 500; }
@@ -201,7 +202,7 @@ body {
 .vendor-ic.api { background: linear-gradient(135deg, var(--accent), var(--accent-deep)); color: #fff; }
 .vendor-name strong { font-size: 13.5px; font-weight: 500; display: block; }
 .vendor-name small { font-size: 11.5px; color: var(--mute); display: block; margin-top: 1px; font-family: var(--font-mono), 'Geist Mono', monospace; }
-.vendor-cat { font-size: 11px; font-family: var(--font-mono), 'Geist Mono', monospace; color: var(--mute); text-transform: uppercase; letter-spacing: 0.04em; }
+.vendor-cat { font-size: 11px; font-family: var(--font-mono), 'Geist Mono', monospace; color: var(--mute); }
 .vendor-bar { height: 6px; border-radius: 999px; background: var(--bg-2); overflow: hidden; }
 .vendor-bar-fill { height: 100%; border-radius: 999px; background: var(--ink); }
 .vendor-bar-fill.api { background: linear-gradient(90deg, var(--accent), var(--accent-deep)); }
@@ -239,17 +240,17 @@ body {
 .cmd-item .shortcut { margin-left: auto; font-family: var(--font-mono), 'Geist Mono', monospace; font-size: 10.5px; color: var(--mute); }
 
 /* ── Login ───────────────────────────────────── */
-.login-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 20% 30%, var(--accent-soft), transparent 60%), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--accent-deep) 15%, transparent), transparent 60%), var(--bg); z-index: 100; }
-.login-card { background: var(--card); border-radius: 22px; padding: 36px 40px 28px; width: 400px; box-shadow: 0 24px 60px rgba(0,0,0,.20); display: flex; flex-direction: column; gap: 20px; }
+.login-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--bg); z-index: 100; background-image: radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 50%), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--accent-deep) 10%, transparent), transparent 50%); }
+.login-card { width: 400px; background: var(--card); border-radius: 22px; padding: 32px 32px 28px; box-shadow: 0 16px 48px rgba(0,0,0,.10), 0 0 0 1px var(--line); display: flex; flex-direction: column; gap: 20px; }
 .login-h1 { font-family: var(--font-serif), 'Instrument Serif', Georgia, serif; font-size: 32px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.1; }
 .login-h1 em { font-style: italic; color: var(--accent); }
 .login-tag { font-size: 13.5px; color: var(--mute); max-width: 280px; line-height: 1.5; }
 .login-field { display: flex; flex-direction: column; gap: 5px; }
-.login-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mute); font-family: var(--font-mono), 'Geist Mono', monospace; }
+.login-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--mute); font-weight: 600; }
 .login-input { padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line-2); background: var(--bg); font-size: 13.5px; color: var(--ink); outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s; width: 100%; }
 .login-input:focus { background: var(--card); border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .login-error { font-size: 12px; color: var(--accent); }
-.login-btn { padding: 12px 0; border-radius: 11px; background: var(--ink); color: #fff; font-size: 13.5px; font-weight: 500; border: none; cursor: pointer; transition: background 0.15s; width: 100%; }
+.login-btn { padding: 12px 0; border-radius: 11px; background: var(--ink); color: #fff; font-size: 13.5px; font-weight: 600; border: none; cursor: pointer; transition: background 0.15s; width: 100%; }
 .login-btn:hover:not(:disabled) { background: var(--accent); }
 .login-btn:disabled { opacity: 0.6; cursor: wait; }
-.login-footer { display: flex; justify-content: space-between; font-size: 11px; font-family: var(--font-mono), 'Geist Mono', monospace; color: var(--mute); padding-top: 4px; border-top: 1px solid var(--line); }
+.login-footer { display: flex; justify-content: space-between; margin-top: 14px; font-size: 11px; font-family: var(--font-mono), 'Geist Mono', monospace; color: var(--mute); }

@@ -26,12 +26,12 @@ export async function loader() {
   const openTickets = allTickets.filter(t => t.status !== "shipped").length
 
   const now = new Date()
-  const hour = now.getHours()
-  const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening"
   const dayName = now.toLocaleDateString("en-GB", { weekday: "long" })
-  const dateStr = now.toLocaleDateString("en-GB", { month: "long", day: "numeric" })
+  const dateStr = now
+    .toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+    .replace(",", "")
 
-  return { allTickets, digest: digest[0] ?? null, items, focus, totalVisitors, totalSpend, openTickets, greeting, dayName, dateStr }
+  return { allTickets, digest: digest[0] ?? null, items, focus, totalVisitors, totalSpend, openTickets, dayName, dateStr }
 }
 
 export async function action({ request }: Route.ActionArgs) {
@@ -69,7 +69,7 @@ export async function action({ request }: Route.ActionArgs) {
 }
 
 export default function Overview({ loaderData }: Route.ComponentProps) {
-  const { allTickets, digest, items, focus, totalVisitors, totalSpend, openTickets, greeting, dayName, dateStr } = loaderData
+  const { allTickets, digest, items, focus, totalVisitors, totalSpend, openTickets, dayName, dateStr } = loaderData
   const [drawerTicket, setDrawerTicket] = useState<Ticket | null>(null)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [draft, setDraft] = useState("")
@@ -101,9 +101,9 @@ export default function Overview({ loaderData }: Route.ComponentProps) {
         <div className="card hello">
           <div className="hello-blob" />
           <div className="greet">{dayName} · {dateStr}</div>
-          <h1>{greeting}, <em>Alvar.</em></h1>
+          <h1>Good morning, <em>Alvar.</em></h1>
           <p className="hello-summary">
-            Traffic across the three properties is <b>up this week</b>. Anthropic API spend is on track.
+            Traffic across the three properties is up <b>+11% week-on-week</b>, mostly driven by studios. Anthropic API spend is on track for <b>~$420 this month</b>. Two leads are waiting in the studios inbox.
           </p>
           <div className="stats-row">
             <div className="stat-item">
@@ -117,6 +117,10 @@ export default function Overview({ loaderData }: Route.ComponentProps) {
             <div className="stat-item">
               <div className="v">{openTickets}</div>
               <div className="l">Open tickets</div>
+            </div>
+            <div className="stat-item">
+              <div className="v">7</div>
+              <div className="l">Active leads</div>
             </div>
           </div>
         </div>
