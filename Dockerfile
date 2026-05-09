@@ -1,26 +1,28 @@
-FROM node:20-alpine AS development-dependencies-env
+FROM node:20-alpine AS builder
+
 RUN corepack enable pnpm
-COPY . /app
 WORKDIR /app
+
+# Install dependencies
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 
-FROM node:20-alpine AS production-dependencies-env
-RUN corepack enable pnpm
-COPY ./package.json pnpm-lock.yaml /app/
-WORKDIR /app
-RUN pnpm install --frozen-lockfile --prod
-
-FROM node:20-alpine AS build-env
-RUN corepack enable pnpm
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
-WORKDIR /app
+# Build the application
+COPY . .
 RUN pnpm run build
 
+# Final production stage
 FROM node:20-alpine
+
 RUN corepack enable pnpm
-COPY ./package.json pnpm-lock.yaml /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
 WORKDIR /app
+
+# Install production dependencies only
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile --prod
+
+# Copy built application
+COPY --from=builder /app/build ./build
+
+# Start the application
 CMD ["pnpm", "run", "start"]
