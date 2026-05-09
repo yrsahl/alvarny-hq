@@ -24,6 +24,7 @@ export default function Login() {
   const data = useActionData<typeof action>()
   const nav = useNavigation()
   const pending = nav.state === "submitting"
+  const emailDefault = import.meta.env.DEV ? "alvar@alvarny.com" : ""
 
   return (
     <div className="login-overlay">
@@ -36,7 +37,7 @@ export default function Login() {
         <Form method="post" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div className="login-field">
             <label className="login-label">Email</label>
-            <input className="login-input" type="email" defaultValue="alvar@alvarny.com" />
+            <input className="login-input" name="email" type="email" defaultValue={emailDefault} autoComplete="username" />
           </div>
           <div className="login-field">
             <label className="login-label">Passphrase</label>
