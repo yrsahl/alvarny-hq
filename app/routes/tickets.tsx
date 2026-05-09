@@ -57,7 +57,7 @@ export default function Tickets({ loaderData }: Route.ComponentProps) {
     <>
       <div className="section-h">
         <h2>Tickets <em>&amp; ideas</em></h2>
-        <span style={{ fontSize: 13, color: "var(--mute)" }}>{allTickets.length} total</span>
+        <span className="more">{allTickets.length} total</span>
       </div>
 
       <div className="card tickets-panel" style={{ marginBottom: 24 }}>
@@ -67,7 +67,6 @@ export default function Tickets({ loaderData }: Route.ComponentProps) {
             value={draft}
             onChange={e => setDraft(e.target.value)}
             onKeyDown={e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) submitDraft() }}
-            style={{ minHeight: 100 }}
           />
           <div className="compose-row">
             <div className="seg">

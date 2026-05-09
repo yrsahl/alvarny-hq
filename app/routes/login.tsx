@@ -29,11 +29,9 @@ export default function Login() {
     <div className="login-overlay">
       <div className="login-card">
         <div className="planet planet-lg" />
-        <div>
-          <h1 className="login-h1">Alvarny HQ<em>.</em></h1>
-          <p className="login-tag">A calm vantage point above everything you ship.</p>
-        </div>
-        <Form method="post" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+        <h1 className="login-h1">Alvarny HQ<em>.</em></h1>
+        <p className="login-tag">A calm vantage point above everything you ship.</p>
+        <Form method="post">
           <div className="login-field">
             <label className="login-label">Passphrase</label>
             <input className="login-input" name="password" type="password" autoFocus placeholder="••••••••••" />
